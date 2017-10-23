@@ -14,6 +14,7 @@ namespace editroles.Models
         }
 
         public DbSet<User> User { get; set; }
+
         public virtual DbSet<sysdac_history_internal> sysdac_history_internal { get; set; }
         public virtual DbSet<sysdac_instances_internal> sysdac_instances_internal { get; set; }
 

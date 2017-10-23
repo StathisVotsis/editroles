@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "editroles", "editroles\editroles.csproj", "{10E1BA55-160A-478D-B176-B427838DEFB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "editroles.Models", "editroles.Models\editroles.Models.csproj", "{9FC394E5-6161-4843-BF97-7F0D22D4D63E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10E1BA55-160A-478D-B176-B427838DEFB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10E1BA55-160A-478D-B176-B427838DEFB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10E1BA55-160A-478D-B176-B427838DEFB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10E1BA55-160A-478D-B176-B427838DEFB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FC394E5-6161-4843-BF97-7F0D22D4D63E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FC394E5-6161-4843-BF97-7F0D22D4D63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FC394E5-6161-4843-BF97-7F0D22D4D63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FC394E5-6161-4843-BF97-7F0D22D4D63E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F994427-0BA1-4511-9839-B32E826D2BAD}
+	EndGlobalSection
+EndGlobal

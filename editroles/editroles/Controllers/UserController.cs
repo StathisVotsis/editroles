@@ -5,11 +5,40 @@ using System.Web;
 using System.Web.Mvc;
 using editroles.Models;
 using System.Web.Security;
+using editroles.Models;
 
 namespace editroles.Controllers
 {
+   
+
     public class UserController : Controller
     {
+        [HttpGet]
+        public ActionResult Registration()
+        {
+            User userModel = new User();
+            return View(userModel);
+        }
+
+        [HttpPost]
+        public ActionResult Registration(User userModel)
+        {
+            using (DbtestEntities dbModel = new DbtestEntities())
+            {
+                if (dbModel.User.Any(x => x.Username == userModel.Username))
+                {
+                    ViewBag.DuplicateMessage = "User already exists";
+                    return View("Registration", new User());
+                }
+                dbModel.User.Add(userModel);
+                dbModel.SaveChanges();
+            }
+
+            ModelState.Clear();
+            ViewBag.SuccessMessage = "You have registered as" + " " + userModel.Username;
+            return View("Registration", new User());
+        }
+
         [HttpGet]
         public ActionResult Login()
         {
@@ -41,6 +70,13 @@ namespace editroles.Controllers
                 ModelState.AddModelError("", "Invalid credentials");
                 return View();
             }
+        }
+
+        [Authorize]
+        public ActionResult SignOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "User");
         }
     }
 }

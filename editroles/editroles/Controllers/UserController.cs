@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using editroles.Models;
 using System.Web.Security;
-using editroles.Models;
+
 
 namespace editroles.Controllers
 {
@@ -23,7 +23,7 @@ namespace editroles.Controllers
         [HttpPost]
         public ActionResult Registration(User userModel)
         {
-            using (DbtestEntities dbModel = new DbtestEntities())
+            using (Database1Entities dbModel = new Database1Entities())
             {
                 if (dbModel.User.Any(x => x.Username == userModel.Username))
                 {
@@ -48,26 +48,35 @@ namespace editroles.Controllers
         [HttpPost]
         public ActionResult Login(User userModel, string returnUrl)
         {
-            DbtestEntities dbModel = new DbtestEntities();
-            
-            var data = dbModel.User.Where(x => x.Username == userModel.Username && x.Password == userModel.Password).First();
-            if (data != null)
+           try
             {
-                FormsAuthentication.SetAuthCookie(data.Username, false);
-                if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/") && returnUrl.StartsWith("//") && returnUrl.StartsWith("/\\"))
-                {
-                    return Redirect(returnUrl);
-                }
+                Database1Entities dbModel = new Database1Entities();
 
-                else
+                var data = dbModel.User.Where(x => x.Username == userModel.Username && x.Password == userModel.Password).First();
+                if (data != null)
                 {
-                    return RedirectToAction("Index", "Home");
+                    FormsAuthentication.SetAuthCookie(data.Username, false);
+                    if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/") && returnUrl.StartsWith("//") && returnUrl.StartsWith("/\\"))
+                    {
+                        ViewBag.SuccessMessage = "You have registered as" + " " + userModel.Username;
+                        return Redirect(returnUrl);                    
+                    }
+
+                    else
+                    {
+                        ViewBag.SuccessMessage = "You have registered as" + " " + userModel.Username;
+                        return RedirectToAction("About", "Home");                        
+                    }
                 }
+                return View();
+
             }
-
-            else
+            
+            catch
             {
+                ModelState.Clear();
                 ModelState.AddModelError("", "Invalid credentials");
+                
                 return View();
             }
         }

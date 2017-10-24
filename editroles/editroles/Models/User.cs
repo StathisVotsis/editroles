@@ -35,7 +35,6 @@ namespace editroles.Models
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "This field cannot be empty")]
-        [DataType(DataType.Password)]
         public string Email { get; set; }
 
         public string Role { get; set; }

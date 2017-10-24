@@ -8,10 +8,15 @@ namespace editroles.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
+        [Authorize(Roles = "Administrator, Member")]
         public ActionResult Index()
         {
             return View();
         }
+
+       
+
 
         public ActionResult About()
         {

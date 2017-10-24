@@ -38,7 +38,7 @@ namespace editroles.MyRoleProvider
 
         public override string[] GetRolesForUser(string username)
         {
-            DbtestEntities db = new DbtestEntities();
+            Database1Entities db = new Database1Entities();
             string data = db.User.Where(x => x.Username == username).FirstOrDefault().Role;
             string[] result = { data };
             return result;

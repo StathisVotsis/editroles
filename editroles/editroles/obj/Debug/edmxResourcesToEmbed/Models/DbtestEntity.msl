@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DbtestModelStoreContainer" CdmEntityContainer="DbtestEntities">
-    <EntitySetMapping Name="User">
-      <EntityTypeMapping TypeName="DbtestModel.User">
-        <MappingFragment StoreEntitySet="User">
+  <EntityContainerMapping StorageEntityContainer="DbtestEntitiesModelStoreContainer" CdmEntityContainer="DbtestEntitiesEntities">
+    <EntitySetMapping Name="Table">
+      <EntityTypeMapping TypeName="DbtestEntitiesModel.Table">
+        <MappingFragment StoreEntitySet="Table">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Password" ColumnName="Password" />

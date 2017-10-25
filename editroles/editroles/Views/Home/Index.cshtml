@@ -23,6 +23,7 @@
             <table>
                 <tr>
                     <td>
+                        <p>You are loggedin as admin</p>
                         <input type="text" id="txtId">
                         <input type="submit" value="Submit" class="btn btn-success btn-lg" />
                     </td>
@@ -33,8 +34,21 @@
        else
        {
 
+           using (Html.BeginForm("Index", "Home", FormMethod.Post))
+           {
+            <div class="form-group">
+
+            </div>
+            <table>
+                <tr>
+                    <td>
+                        <p>You are loggedin as member</p>
+                        <input type="text" id="txtId">
+                        <input type="submit" value="Submit" class="btn btn-success btn-lg" />
+                    </td>
+                </tr>
+            </table>
+           }
        }
-
-
    }
 </div>

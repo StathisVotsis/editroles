@@ -15,10 +15,8 @@ namespace editroles.Controllers
         {           
             using (Database1Entities db = new Database1Entities())
             {
-                var L2EQuery = db.User.Where(s => s.Role == "Member").ToList();
-
-                
-
+                var L2EQuery = db.User.ToList();
+                // var L2EQuery = db.User.Where(s => s.Role == "Member").ToList();
                 return View(L2EQuery);
             }           
         }
@@ -32,7 +30,7 @@ namespace editroles.Controllers
         [HttpPost]
         public ActionResult EditIndex2()
         {
-            return RedirectToAction("About", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         [AllowAnonymous]

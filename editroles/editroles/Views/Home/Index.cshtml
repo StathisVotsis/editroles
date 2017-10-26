@@ -26,14 +26,15 @@
                         <th>LastName</th>
                         <th>Email</th>
                         <th>Edit</th>
-                        <th>Delete</th>
                     </tr>
                    @foreach (var item in Model)
                    {
-                    
-                        @item.Username
-                        
-                    
+                    <tr>
+                        <th>@item.Username</th>
+                        <th>@item.Password</th>
+                        <th>@item.Email</th>
+                        <th>@item.Role</th>
+                    </tr>                    
                    }
                 </table>
             </div>

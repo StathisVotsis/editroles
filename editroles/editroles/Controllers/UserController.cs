@@ -65,7 +65,7 @@ namespace editroles.Controllers
                     else
                     {
                         ViewBag.SuccessMessage = "You have registered as" + " " + userModel.Username;
-                        return RedirectToAction("About", "Home");                        
+                        return RedirectToAction("Index", "Home");                        
                     }
                 }
                 return View();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using editroles.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,11 +12,29 @@ namespace editroles.Controllers
         [HttpGet]
         [Authorize(Roles = "Administrator, Member")]
         public ActionResult Index()
-        {
-            return View();
+        {           
+            using (Database1Entities db = new Database1Entities())
+            {
+                var L2EQuery = db.User.Where(s => s.Role == "Member").ToList();
+
+                
+
+                return View(L2EQuery);
+            }           
         }
 
-        
+        [HttpPost]
+        public ActionResult EditIndex()
+        {
+            return RedirectToAction("Index","Home");
+        }
+
+        [HttpPost]
+        public ActionResult EditIndex2()
+        {
+            return RedirectToAction("About", "Home");
+        }
+
         [AllowAnonymous]
         public ActionResult About()
         {

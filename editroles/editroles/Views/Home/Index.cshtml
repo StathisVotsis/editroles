@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<editroles.Models.User>
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -15,10 +16,26 @@
     <a href="@Url.Action("Signout", "User")">Logout</a>
     if (User.IsInRole("Administrator"))
     {
-        using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        using (Html.BeginForm("EditIndex", "Home", FormMethod.Post))
         {
             <div class="form-group">
+                <table class="table table-bordered table-striped">
 
+                    <tr>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Email</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                   @foreach (var item in Model)
+                   {
+                    
+                        @item.Username
+                        
+                    
+                   }
+                </table>
             </div>
             <table>
                 <tr>
@@ -34,8 +51,8 @@
        else
        {
 
-           using (Html.BeginForm("Index", "Home", FormMethod.Post))
-           {
+        using (Html.BeginForm("EditIndex2", "Home", FormMethod.Post))
+        {
             <div class="form-group">
 
             </div>
@@ -48,7 +65,7 @@
                     </td>
                 </tr>
             </table>
-           }
-       }
+        }
+      }
    }
 </div>

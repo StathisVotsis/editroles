@@ -4,7 +4,7 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
+    <h1>S.Votsis web developer</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
@@ -13,7 +13,7 @@
    @if (User.Identity.IsAuthenticated)
    {
     <h1>Welcome @(User.Identity.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "Guest")</h1>
-    <a href="@Url.Action("Signout", "User")">Logout</a>
+  
     if (User.IsInRole("Administrator"))
     {
         using (Html.BeginForm("EditIndex", "Home", FormMethod.Post))
@@ -22,10 +22,10 @@
                 <table class="table table-bordered table-striped">
 
                     <tr>
-                        <th>FirstName</th>
-                        <th>LastName</th>
+                        <th>Username</th>
+                        <th>Password</th>
                         <th>Email</th>
-                        <th>Edit</th>
+                        <th>Role</th>
                     </tr>
                    @foreach (var item in Model)
                    {
@@ -66,7 +66,8 @@
                     </td>
                 </tr>
             </table>
-        }
-      }
+           }
+       }
+    <a href="@Url.Action("Signout", "User")">Logout</a>
    }
 </div>

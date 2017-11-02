@@ -175,6 +175,8 @@
     </Compile>
     <Compile Include="MyRoleProvider\SiteRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\User.cs" />
+    <Compile Include="User\UserRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Database1.mdf" />

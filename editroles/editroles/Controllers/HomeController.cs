@@ -1,4 +1,4 @@
-﻿using editroles.Models;
+﻿using editroles.UserModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace editroles.Controllers
         [Authorize(Roles = "Administrator, Member")]
         public ActionResult Index()
         {           
-            using (Database1Entities db = new Database1Entities())
+            using (UserEntity db = new UserEntity())
             {
                 var L2EQuery = db.User.ToList();
                 // var L2EQuery = db.User.Where(s => s.Role == "Member").ToList();

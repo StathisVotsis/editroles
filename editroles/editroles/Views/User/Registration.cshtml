@@ -1,4 +1,4 @@
-﻿@model editroles.Models.User
+﻿@model editroles.UserModel.User
 
 @{
     ViewBag.Title = "Registration";
@@ -10,7 +10,7 @@
 @using (Html.BeginForm("Registration", "User", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>User</h4>
         <hr />
@@ -73,3 +73,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+

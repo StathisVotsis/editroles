@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using editroles.Models;
+using editroles.UserModel;
 using System.Web.Security;
 
 
@@ -13,30 +13,34 @@ namespace editroles.Controllers
 
     public class UserController : Controller
     {
+        UserEntity dbModel = new UserEntity();
+
         [HttpGet]
         public ActionResult Registration()
-        {
-            User userModel = new User();
-            return View(userModel);
+        {            
+            return View();
         }
 
         [HttpPost]
         public ActionResult Registration(User userModel)
         {
-            using (Database1Entities dbModel = new Database1Entities())
+            if (ModelState.IsValid)
             {
-                if (dbModel.User.Any(x => x.Username == userModel.Username))
+                using (dbModel)
                 {
-                    ViewBag.DuplicateMessage = "User already exists";
-                    return View("Registration", new User());
+                    if (dbModel.User.Any(x => x.Username == userModel.Username))
+                    {
+                        ViewBag.DuplicateMessage = "User already exists";
+                        return View("Registration", new User());
+                    }
+                    dbModel.User.Add(userModel);
+                    dbModel.SaveChanges();
                 }
-                dbModel.User.Add(userModel);
-                dbModel.SaveChanges();
-            }
-
+            }            
             ModelState.Clear();
             ViewBag.SuccessMessage = "You have registered as" + " " + userModel.Username;
             return View("Registration", new User());
+            
         }
 
         [HttpGet]
@@ -48,10 +52,8 @@ namespace editroles.Controllers
         [HttpPost]
         public ActionResult Login(User userModel, string returnUrl)
         {
-           try
+            if(ModelState.IsValid)
             {
-                Database1Entities dbModel = new Database1Entities();
-
                 var data = dbModel.User.Where(x => x.Username == userModel.Username && x.Password == userModel.Password).First();
                 if (data != null)
                 {
@@ -59,26 +61,29 @@ namespace editroles.Controllers
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/") && returnUrl.StartsWith("//") && returnUrl.StartsWith("/\\"))
                     {
                         ViewBag.SuccessMessage = "You have registered as" + " " + userModel.Username;
-                        return Redirect(returnUrl);                    
+                        return Redirect(returnUrl);
                     }
 
                     else
                     {
                         ViewBag.SuccessMessage = "You have registered as" + " " + userModel.Username;
-                        return RedirectToAction("Index", "Home");                        
+                        return RedirectToAction("Index", "Home");
                     }
                 }
-                return View();
+            }
+           
+                 return View();
 
-            }
-            
-            catch
-            {
-                ModelState.Clear();
-                ModelState.AddModelError("", "Invalid credentials");
-                
-                return View();
-            }
+            // }
+
+             //else
+             //{
+                 ModelState.Clear();
+                 ModelState.AddModelError("", "Invalid credentials");
+
+                 return View();
+            // }
+           
         }
 
         [Authorize]

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using editroles.Models;
+using editroles.UserModel;
 using System.Web.Security;
 
 namespace editroles.MyRoleProvider
@@ -38,7 +38,7 @@ namespace editroles.MyRoleProvider
 
         public override string[] GetRolesForUser(string username)
         {
-            Database1Entities db = new Database1Entities();
+            UserEntity db = new UserEntity();
             string data = db.User.Where(x => x.Username == username).FirstOrDefault().Role;
             string[] result = { data };
             return result;

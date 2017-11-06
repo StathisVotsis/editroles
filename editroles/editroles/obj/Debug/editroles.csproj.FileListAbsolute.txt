@@ -86,7 +86,7 @@ C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\editroles\editroles\editroles\bi
 C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\editroles\editroles\editroles\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\editroles\editroles\editroles\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\editroles\editroles\editroles\bin\Microsoft.AI.Web.xml
-C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\editroles\editroles\editroles\obj\Debug\editroles.csprojResolveAssemblyReference.cache
 C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\editroles\editroles\editroles\obj\Debug\editroles.csproj.CoreCompileInputs.cache
 C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\editroles\editroles\editroles\obj\Debug\editroles.dll
 C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\editroles\editroles\editroles\obj\Debug\editroles.pdb
+C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\editroles\editroles\editroles\obj\Debug\editroles.csprojResolveAssemblyReference.cache

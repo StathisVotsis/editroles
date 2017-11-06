@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using editroles.UserModel;
 using System.Web.Security;
+using editroles.Model;
+
 
 
 namespace editroles.Controllers
 {
-   
+
 
     public class UserController : Controller
     {
@@ -18,11 +17,11 @@ namespace editroles.Controllers
         [HttpGet]
         public ActionResult Registration()
         {            
-            return View();
+            return View(new Registration());
         }
 
         [HttpPost]
-        public ActionResult Registration(User userModel)
+        public ActionResult Registration(Registration userModel)
         {
             if (ModelState.IsValid)
             {
@@ -31,15 +30,20 @@ namespace editroles.Controllers
                     if (dbModel.User.Any(x => x.Username == userModel.Username))
                     {
                         ViewBag.DuplicateMessage = "User already exists";
-                        return View("Registration", new User());
+                        return View("Registration", new Registration());
                     }
-                    dbModel.User.Add(userModel);
-                    dbModel.SaveChanges();
+                    else
+                    {
+                       // dbModel.User.Add(userModel);
+                        dbModel.SaveChanges();
+                    }
+                   
+                    
                 }
             }            
             ModelState.Clear();
             ViewBag.SuccessMessage = "You have registered as" + " " + userModel.Username;
-            return View("Registration", new User());
+            return View("Registration", new Registration());
             
         }
 
@@ -50,7 +54,7 @@ namespace editroles.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(User userModel, string returnUrl)
+        public ActionResult Login(Login userModel, string returnUrl)
         {
             if(ModelState.IsValid)
             {
@@ -71,18 +75,16 @@ namespace editroles.Controllers
                     }
                 }
             }
-           
-                 return View();
-
-            // }
-
-             //else
-             //{
+                                     
+             else
+             {
                  ModelState.Clear();
                  ModelState.AddModelError("", "Invalid credentials");
 
                  return View();
-            // }
+             }
+
+            return View();
            
         }
 

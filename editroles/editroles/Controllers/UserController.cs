@@ -3,8 +3,7 @@ using System.Web.Mvc;
 using editroles.UserModel;
 using System.Web.Security;
 using editroles.Model;
-
-
+using System.Data.Entity;
 
 namespace editroles.Controllers
 {
@@ -23,6 +22,7 @@ namespace editroles.Controllers
         [HttpPost]
         public ActionResult Registration(Registration userModel)
         {
+            
             if (ModelState.IsValid)
             {
                 using (dbModel)
@@ -34,7 +34,8 @@ namespace editroles.Controllers
                     }
                     else
                     {
-                       // dbModel.User.Add(userModel);
+                        //dbModel.User.Add(userModel);
+                        
                         dbModel.SaveChanges();
                     }
                    

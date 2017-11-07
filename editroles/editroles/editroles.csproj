@@ -155,6 +155,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Login.cs" />
     <Compile Include="Model\Registration.cs" />
     <Compile Include="MyRoleProvider\SiteRole.cs" />

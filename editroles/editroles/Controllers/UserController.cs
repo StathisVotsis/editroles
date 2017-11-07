@@ -20,6 +20,7 @@ namespace editroles.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Registration(Registration userModel)
         {
             
@@ -34,8 +35,8 @@ namespace editroles.Controllers
                     }
                     else
                     {
-                        //dbModel.User.Add(userModel);
-                        
+
+                        //dbModel.User.Add();
                         dbModel.SaveChanges();
                     }
                    

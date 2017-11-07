@@ -5,12 +5,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace editroles.Model
 {
    
+    
     public class Registration
     {
+      
         [Key]
         public int Id { get; set; }
 

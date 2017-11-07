@@ -26,5 +26,6 @@ namespace editroles.UserModel
         }
     
         public virtual DbSet<User> User { get; set; }
+        public string Username { get; internal set; }
     }
 }

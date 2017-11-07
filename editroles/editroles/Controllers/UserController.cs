@@ -36,7 +36,8 @@ namespace editroles.Controllers
                     else
                     {
 
-                        //dbModel.User.Add();
+                        //dbModel.User.Add(userModel);
+                        
                         dbModel.SaveChanges();
                     }
                    

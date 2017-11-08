@@ -88,5 +88,4 @@ C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\editroles\editroles\editroles\bi
 C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\editroles\editroles\editroles\obj\Debug\editroles.csproj.CoreCompileInputs.cache
 C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\editroles\editroles\editroles\obj\Debug\editroles.dll
 C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\editroles\editroles\editroles\obj\Debug\editroles.pdb
-C:\Users\stath\Desktop\develop\editroles\editroles\editroles\obj\Debug\editroles.csprojResolveAssemblyReference.cache
 C:\Users\s.votsis.CREATIVEMINDS\Desktop\develop\editroles\editroles\editroles\obj\Debug\editroles.csprojResolveAssemblyReference.cache

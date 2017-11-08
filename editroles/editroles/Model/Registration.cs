@@ -34,9 +34,7 @@ namespace editroles.Model
         [Required(ErrorMessage = "This field cannot be empty")]
         public string Email { get; set; }
 
-        public string Role { get; set; }
-
-       
+        public string Role { get; set; }       
 
     }
 

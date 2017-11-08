@@ -63,7 +63,7 @@ namespace editroles.Controllers
         {
             if(ModelState.IsValid)
             {
-                var data = dbModel.User.Where(x => x.Username == userModel.Username && x.Password == userModel.Password).First();
+                var data = dbModel.User.Where(x => x.Username == userModel.Username && x.Password == userModel.Password).First();//lathos ean den epistrepsei tipota
                 if (data != null)
                 {
                     FormsAuthentication.SetAuthCookie(data.Username, false);

@@ -35,9 +35,11 @@ namespace editroles.Controllers
                     }
                     else
                     {
-
-                        //dbModel.User.Add(userModel);
-                        
+                        User user = new User();
+                        user.Username = userModel.Username;
+                        user.Password = userModel.Password;
+                        user.Email = userModel.Email;
+                        dbModel.User.Add(user);                        
                         dbModel.SaveChanges();
                     }
                    

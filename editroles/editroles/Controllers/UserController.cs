@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using editroles.UserModel;
 using System.Web.Security;
 using editroles.Model;
-using System.Data.Entity;
 
 namespace editroles.Controllers
 {
@@ -16,12 +15,12 @@ namespace editroles.Controllers
         [HttpGet]
         public ActionResult Registration()
         {            
-            return View(new Registration());
+            return View(new RegistrationView());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Registration(Registration userModel)
+        public ActionResult Registration(RegistrationView userModel)
         {
             
             if (ModelState.IsValid)
@@ -31,7 +30,7 @@ namespace editroles.Controllers
                     if (dbModel.User.Any(x => x.Username == userModel.Username))
                     {
                         ViewBag.DuplicateMessage = "User already exists";
-                        return View("Registration", new Registration());
+                        return View("Registration", new RegistrationView());
                     }
                     else
                     {
@@ -41,15 +40,18 @@ namespace editroles.Controllers
                         user.Email = userModel.Email;
                         dbModel.User.Add(user);                        
                         dbModel.SaveChanges();
+                        ViewBag.SuccessMessage = "You have registered as" + " " + userModel.Username;
+                        return View("Registration", new RegistrationView());
                     }
                    
                     
                 }
-            }            
-            ModelState.Clear();
-            ViewBag.SuccessMessage = "You have registered as" + " " + userModel.Username;
-            return View("Registration", new Registration());
-            
+            }
+            else
+            {
+                ModelState.Clear();
+                return View("Registration", new RegistrationView());
+            }          
         }
 
         [HttpGet]
@@ -59,11 +61,11 @@ namespace editroles.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(Login userModel, string returnUrl)
+        public ActionResult Login(LoginView userModel, string returnUrl)
         {
             if(ModelState.IsValid)
             {
-                var data = dbModel.User.Where(x => x.Username == userModel.Username && x.Password == userModel.Password).First();//lathos ean den epistrepsei tipota
+                var data = dbModel.User.Where(x => x.Username == userModel.Username && x.Password == userModel.Password).FirstOrDefault();//lathos ean den epistrepsei tipota
                 if (data != null)
                 {
                     FormsAuthentication.SetAuthCookie(data.Username, false);
@@ -76,20 +78,24 @@ namespace editroles.Controllers
                     else
                     {
                         ViewBag.SuccessMessage = "You have registered as" + " " + userModel.Username;
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Contact", "Home");
                     }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Wrong User");
+                    return View();
                 }
             }
                                      
              else
              {
                  ModelState.Clear();
-                 ModelState.AddModelError("", "Invalid credentials");
-
+                 ModelState.AddModelError("", "Null credentials");
                  return View();
              }
 
-            return View();
+            
            
         }
 

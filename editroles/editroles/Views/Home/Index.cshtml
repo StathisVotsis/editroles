@@ -5,7 +5,7 @@
 
 <div class="jumbotron">
     <h1>S.Votsis web developer</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p class="lead"></p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
@@ -26,6 +26,7 @@
                         <th>Password</th>
                         <th>Email</th>
                         <th>Role</th>
+                        <th>Edit</th>
                     </tr>
                    @foreach (var item in Model)
                    {
@@ -43,7 +44,7 @@
                     <td>
                         <p>You are loggedin as admin</p>
                         <input type="text" id="txtId">
-                        <input type="submit" value="Submit" class="btn btn-success btn-lg" />
+                        <input type="submit" value="Submit" class="btn btn-primary btn-lg" />
                     </td>
                 </tr>
             </table>
@@ -52,15 +53,32 @@
        else
        {
 
-        using (Html.BeginForm("EditIndex2", "Home", FormMethod.Post))
-        {
+           using (Html.BeginForm("EditIndex2", "Home", FormMethod.Post))
+           {
             <div class="form-group">
+                <table class="table table-bordered table-striped">
 
+                    <tr>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>@item.Username</th>
+                            <th>No permission</th>
+                            <th>@item.Email</th>
+                            <th>@item.Role</th>
+                        </tr>
+                    }
+                </table>
             </div>
             <table>
                 <tr>
                     <td>
-                        <p>You are loggedin as member</p>
+                        <p>You are loggedin as Member</p>
                         <input type="text" id="txtId">
                         <input type="submit" value="Submit" class="btn btn-success btn-lg" />
                     </td>
@@ -68,6 +86,7 @@
             </table>
            }
        }
-    <a href="@Url.Action("Signout", "User")">Logout</a>
+    <input type="submit" value="Logout" class="alert-danger" href="@Url.Action("Signout", "User")" />
+    
    }
 </div>
